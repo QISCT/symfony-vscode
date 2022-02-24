@@ -27,7 +27,7 @@ export class ConsoleContainerProvider implements ContainerProviderInterface {
 
   provideServiceDefinitions(): Promise<ServiceDefinition[]> {
     return this._executeCommand<ServiceDefinition>(
-      ["debug:container", "--show-hidden"],
+      ["debug:container", ""],
       (obj) => {
         let result: ServiceDefinition[] = [];
         let collection: Object = {};
