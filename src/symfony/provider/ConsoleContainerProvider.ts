@@ -94,7 +94,7 @@ export class ConsoleContainerProvider implements ContainerProviderInterface {
   }
 
   provideParameters(): Promise<Parameter[]> {
-    return this._executeCommand<Parameter>(["debug:container", ""], (obj) => {
+    return this._executeCommand<Parameter>(["debug:container", "--parameters"], (obj) => {
       let result: Parameter[] = [];
 
       Object.keys(obj).forEach((key) => {
