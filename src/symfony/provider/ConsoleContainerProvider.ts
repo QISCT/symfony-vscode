@@ -94,20 +94,17 @@ export class ConsoleContainerProvider implements ContainerProviderInterface {
   }
 
   provideParameters(): Promise<Parameter[]> {
-    return this._executeCommand<Parameter>(
-      ["debug:container", "--show-hidden"],
-      (obj) => {
-        let result: Parameter[] = [];
+    return this._executeCommand<Parameter>(["debug:container", ""], (obj) => {
+      let result: Parameter[] = [];
 
-        Object.keys(obj).forEach((key) => {
-          if (!this._matchParametersFilters(key)) {
-            result.push(new Parameter(key, obj[key]));
-          }
-        });
+      Object.keys(obj).forEach((key) => {
+        if (!this._matchParametersFilters(key)) {
+          result.push(new Parameter(key, obj[key]));
+        }
+      });
 
-        return result;
-      }
-    );
+      return result;
+    });
   }
 
   private _executeCommand<T>(
